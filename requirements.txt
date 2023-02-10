@@ -1,5 +1,6 @@
 Flask
 Flask-sqlalchemy
+flask-debugtoolbar
 python-dotenv
 rich
 setuptools

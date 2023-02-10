@@ -1,11 +1,9 @@
 /.idea/
 /!_info/
 node_modules/
-/usr/
 
 /.env.local
 /.env.*.local
-/public/uploads/
+/instance/
 /venv/
 /var/
-/vendor/
