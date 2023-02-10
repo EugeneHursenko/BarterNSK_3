@@ -1,3 +1,4 @@
+import bcrypt
 from app import db
 
 ROLE_USER = 0
@@ -12,6 +13,9 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.nickname
+
+    def is_correct_password(self, plaintext):
+        return bcrypt.check_password_hash(self._password, plaintext)
 
 
 class Category(db.Model):

@@ -1,8 +1,12 @@
 alembic
+bcrypt
+email_validator
 Flask
 Flask-sqlalchemy
 flask-debugtoolbar
+Flask-Login
 Flask-Script
+Flask-WTF
 python-dotenv
 rich
 setuptools

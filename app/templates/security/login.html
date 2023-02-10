@@ -7,13 +7,17 @@
 {% block content %}
     <h1>Вход</h1>
 
-    <form method="post">
-        <p>Логин</p>
-        <input type="text" name="login">
+    <form action="{{ url_for('login') }}" method="post">
+        {{ form.csrf_token }}
 
-        <p>Пароль</p>
-        <input type="password" name="password">
-        <br>
+        <p>{{ form.username.label }}:</p>
+        {{ form.username(placeholder='yourname@email.com') }}
+
+        <p>{{ form.password.label }}:</p>
+        {{ form.password }}
+
+        <p>
         <input type="submit" value="Войти">
+        </p>
     </form>
 {% endblock %}
