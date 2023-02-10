@@ -12,7 +12,7 @@ def index():
 
 @app.route('/login')
 def login():
-    return "Login!"
+    return render_template('security/login.html')
 
 
 @app.route('/hi')
