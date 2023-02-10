@@ -14,7 +14,11 @@ app = Flask(__name__)
 # configure the SQLite database, relative to the app instance folder
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///var/database.db"
 app.config.from_object('config')
+# app.register_blueprint(my_controllers)
 # initialize the app with the extension
 db.init_app(app)
 
-from app import main, models
+# from app.models import *
+# from app.controllers import *
+
+from app import models, routes

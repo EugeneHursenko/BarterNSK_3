@@ -12,3 +12,20 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.nickname
+
+
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), index=True, unique=True)
+
+    def __repr__(self):
+        return '<Category %r>' % self.title
+
+
+class Offer(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), index=True)
+    description = db.Column(db.Text)
+
+    def __repr__(self):
+        return '<Offer %r>' % self.title
