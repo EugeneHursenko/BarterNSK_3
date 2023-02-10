@@ -5,12 +5,12 @@
 
 ```shell
 # windows
-install.cmd
+./install.cmd
 ```
 
 Запуск на локальной машине для разработки
 
 ```shell
 # windows
-run.cmd
+./run.cmd
 ```
