@@ -1,0 +1,15 @@
+<html>
+  <head>
+  <title>
+    {% if title %}
+        {{ title }} - Бартер НСК
+    {% endif %}
+        Бартер НСК
+    </title>
+  </head>
+  <body>
+    <div>Бартер НСК: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>

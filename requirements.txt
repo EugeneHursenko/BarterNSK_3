@@ -1,0 +1,7 @@
+Flask
+Flask-sqlalchemy
+python-dotenv
+rich
+setuptools
+SQLAlchemy
+SQLAlchemy-migrate
