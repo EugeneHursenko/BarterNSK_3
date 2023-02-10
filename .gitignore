@@ -6,5 +6,6 @@ node_modules/
 /.env.local
 /.env.*.local
 /public/uploads/
+/venv/
 /var/
 /vendor/
