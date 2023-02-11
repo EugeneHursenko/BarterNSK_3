@@ -1,7 +1,7 @@
-alembic
-bcrypt
+alembic~=1.9.3
+bcrypt~=4.0.1
 email_validator
-Flask
+Flask~=2.2.2
 Flask-sqlalchemy
 flask-debugtoolbar
 Flask-Login
@@ -10,5 +10,7 @@ Flask-WTF
 python-dotenv
 rich
 setuptools
-SQLAlchemy
+SQLAlchemy~=2.0.3
 SQLAlchemy-migrate
+WTForms~=3.0.1
+click~=8.1.3

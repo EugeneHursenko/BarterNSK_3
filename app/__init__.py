@@ -22,7 +22,7 @@ db.init_app(app)
 # from app.models import *
 # from app.controllers import *
 
-from app import models, routes
+from app import cli, models, routes
 
 from .models import User
 
