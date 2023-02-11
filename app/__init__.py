@@ -13,7 +13,6 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py', silent=True)
 app.config.from_prefixed_env()
 
-# manager = Manager(app)
 db = SQLAlchemy(app)
 
 with app.app_context():
