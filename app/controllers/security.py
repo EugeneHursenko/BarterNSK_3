@@ -26,4 +26,4 @@ def security_login():
 def security_logout():
     logout_user()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('homepage'))

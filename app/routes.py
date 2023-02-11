@@ -4,7 +4,7 @@ from .controllers import *
 
 
 @app.route('/')
-def index():
+def homepage():
     return "Hello, World!"
 
 
