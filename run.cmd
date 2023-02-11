@@ -1,1 +1,1 @@
-.\venv\Scripts\activate && py run.py
+.\venv\Scripts\activate && python run.py

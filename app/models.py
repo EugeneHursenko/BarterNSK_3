@@ -33,3 +33,12 @@ class Offer(db.Model):
 
     def __repr__(self):
         return '<Offer %r>' % self.title
+
+
+# class Test2(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     title = db.Column(db.String(255), index=True)
+#     description = db.Column(db.Text)
+#
+#     def __repr__(self):
+#         return '<Test2 %r>' % self.title
