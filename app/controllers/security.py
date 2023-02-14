@@ -1,6 +1,6 @@
 import os
 from app import app
-from flask import render_template, send_from_directory, redirect, url_for
+from flask import render_template, send_from_directory, redirect, request, url_for
 from flask_login import login_user, logout_user
 from app.forms import UsernamePasswordForm
 from app.models import User

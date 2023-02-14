@@ -8,9 +8,12 @@ Flask-Alembic
 Flask-Script
 Flask-WTF
 python-dotenv
+pytz
 rich
 setuptools
 SQLAlchemy
 SQLAlchemy-migrate
+tabulate
+texttable
 WTForms
 click
