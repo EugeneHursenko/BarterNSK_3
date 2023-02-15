@@ -1,6 +1,7 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_alembic import Alembic
+from flask_bcrypt import Bcrypt
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__,
             instance_relative_config=True,
@@ -12,6 +13,7 @@ app.config.from_object('config')
 app.config.from_pyfile('config.py', silent=True)
 app.config.from_prefixed_env()
 
+bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
 with app.app_context():

@@ -5,19 +5,35 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Вход</h1>
+    <div class="container">
+        <div class="row mt-4">
+            <h1>Вход</h1>
 
-    <form action="{{ url_for('security_login') }}" method="post">
-        {{ form.csrf_token }}
-
-        <p>{{ form.username.label }}:</p>
-        {{ form.username(placeholder='yourname@email.com') }}
-
-        <p>{{ form.password.label }}:</p>
-        {{ form.password }}
-
-        <p>
-        <input type="submit" value="Войти">
-        </p>
-    </form>
+            <form action="{{ url_for('security_login') }}" method="post">
+                {{ form.csrf_token }}
+                {{ render_field(form.email, class="form-control", placeholder='yourname@email.com') }}
+                {{ render_field(form.password, class="form-control") }}
+{#                {{ render_field(form.remember_me) }}#}
+                <button type="submit" class="btn btn-block btn-primary mb-3">Войти</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
+
+{% macro render_field(field) %}
+    <div class="mb-1 row">
+        <label class="col-sm-1 col-form-label">
+            {{ field.label }}
+        </label>
+        <div class="col-sm-3">
+            {{ field(**kwargs)|safe }}
+            {% if field.errors %}
+                <ul class="errors">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

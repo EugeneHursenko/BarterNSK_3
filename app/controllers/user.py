@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, send_from_directory, redirect, request, url_for
-from app.forms import UsernamePasswordForm
+from app.forms import RegisterForm
 from app.models import User
 
 

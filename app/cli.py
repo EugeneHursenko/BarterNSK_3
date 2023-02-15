@@ -1,11 +1,9 @@
 import click
-from app import app
+from app import app, db, bcrypt
 from datetime import datetime
 from rich import print
 from texttable import Texttable
-from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User
-from . import db
 
 
 @app.cli.command('tech', short_help='Для технических целей.')
@@ -36,7 +34,7 @@ def cli_user_create(name, password, email):
         email=email,
         name=name,
         created_at=datetime.now(),
-        password=generate_password_hash(password, method='sha256')
+        password=bcrypt.generate_password_hash(password),
     )
 
     db.session.add(new_user)
@@ -102,12 +100,17 @@ def cli_user_disable(email):
 
 @app.cli.command('user-change-password', short_help='Поменять пароль пользователю.')
 @click.option('--email', prompt='Email', required=True)
-def cli_user_change_password(email):
+@click.option('--password', prompt='Пароль', required=True)
+def cli_user_change_password(email, password):
     user = User.query.filter_by(email=email).first()
 
     if not user:
         print('Ошибка: Пользователя с таким емаил не существует.')
         return
 
-    print('@todo')
+    user.password = bcrypt.generate_password_hash(password)
 
+    db.session.add(user)
+    db.session.commit()
+
+    print('Успешно: Пароль обновлён.')

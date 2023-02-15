@@ -1,28 +1,36 @@
-import os
 from app import app
-from flask import render_template, send_from_directory, redirect, request, url_for
-from flask_login import login_user, logout_user
-from app.forms import UsernamePasswordForm
+from flask import flash, render_template, redirect, url_for
+from flask_bcrypt import check_password_hash
+from flask_login import login_required, login_user, logout_user
+from app.forms import LoginForm
 from app.models import User
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=('GET', 'POST'))
 def security_login():
-    form = UsernamePasswordForm()
+    form = LoginForm()
+
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first_or_404()
+        try:
+            user = User.query.filter_by(email=form.email.data).first()
 
-        if user.is_correct_password(form.password.data):
-            login_user(user)
-
-            return redirect(url_for('hi'))
-        else:
-            return redirect(url_for('security_login'))
+            if user and check_password_hash(user.password, form.password.data):
+                if not user.is_enabled:
+                    flash('Аккаунт отключен', 'danger')
+                    return redirect(url_for('security_login'))
+                else:
+                    login_user(user, remember=form.remember_me.data)
+                return redirect(url_for('homepage'))
+            else:
+                flash('Invalid Username or password!', 'danger')
+        except Exception as e:
+            flash(e, 'danger')
 
     return render_template('security/login.html', form=form)
 
 
 @app.route('/logout')
+@login_required
 def security_logout():
     logout_user()
 
