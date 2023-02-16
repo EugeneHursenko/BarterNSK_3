@@ -4,8 +4,21 @@
     Регистрация - {{ super() }}
 {% endblock %}
 
-{% block content %}
-    <h1>Регистрация</h1>
+{% from 'macros/form_render_field.html' import render_field %}
 
-    @todo
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <h1>Регистрация</h1>
+
+            <form action="{{ url_for('user_register') }}" method="post">
+                {{ form.csrf_token }}
+                {{ render_field(form.name, class="form-control") }}
+                {{ render_field(form.email, class="form-control", placeholder='example@email.com') }}
+                {{ render_field(form.password, class="form-control") }}
+                {{ render_field(form.cpassword, class="form-control") }}
+                <button type="submit" class="btn btn-block btn-primary mb-3">Войти</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

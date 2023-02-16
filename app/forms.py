@@ -14,16 +14,17 @@ from .models import User
 
 
 class LoginForm(FlaskForm):
-    email = StringField(validators=[InputRequired(), Email(), Length(1, 64)])
-    password = PasswordField(validators=[InputRequired(), Length(min=3, max=72)])
-    remember_me = BooleanField()
+    email = StringField(label='Имя', validators=[InputRequired(), Email(), Length(1, 64)])
+    password = PasswordField(label='Пароль', validators=[InputRequired(), Length(min=3, max=72)])
+    remember_me = BooleanField(label='Запомнить')
     name = StringField(
         validators=[Optional()]
     )
 
 
 class RegisterForm(FlaskForm):
-    username = StringField(
+    name = StringField(
+        label='Имя',
         validators=[
             InputRequired(),
             Length(3, 20, message="Please provide a valid name"),
@@ -35,19 +36,23 @@ class RegisterForm(FlaskForm):
         ]
     )
     email = StringField(validators=[InputRequired(), Email(), Length(1, 64)])
-    password = PasswordField(validators=[InputRequired(), Length(8, 72)])
+    password = PasswordField(
+        label='Пароль',
+        validators=[InputRequired(), Length(4, 72)]
+    )
     cpassword = PasswordField(
+        label='Повтор пароля',
         validators=[
             InputRequired(),
-            Length(8, 72),
-            EqualTo('password', message='Passwords must match !'),
+            Length(4, 72),
+            EqualTo('password', message='Пароли должны совпадать'),
         ]
     )
 
     def validate_email(self, email):
         if User.query.filter_by(email=email.data).first():
-            raise ValidationError("Email already registered!")
+            raise ValidationError('Емаил уже занят')
 
     def validate_name(self, name):
         if User.query.filter_by(name=name.data).first():
-            raise ValidationError("Username already taken!")
+            raise ValidationError('Имя пользователя уже занято')
