@@ -13,7 +13,7 @@
 
             <form action="{{ url_for('user_register') }}" method="post">
                 {{ form.csrf_token }}
-                {{ render_field(form.name, class="form-control") }}
+                {{ render_field(form.name, class="form-control", autofocus="autofocus") }}
                 {{ render_field(form.email, class="form-control", placeholder='example@email.com') }}
                 {{ render_field(form.password, class="form-control") }}
                 {{ render_field(form.cpassword, class="form-control") }}
