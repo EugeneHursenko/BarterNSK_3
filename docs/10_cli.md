@@ -6,13 +6,13 @@
 В Windows CMD (Командная строка) активировать `venv`:
 
 ```shell
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 В Linux активировать `venv`:
 
 ```shell
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 To deactivate a virtual environment, type:
