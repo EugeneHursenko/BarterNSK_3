@@ -1,9 +1,11 @@
 /.idea/
 /!_info/
+/.venv/
 node_modules/
+__pycache__
 
 /.env.local
-/.env.*.local
+#/.env.*.local
 /instance/
 /venv/
 /var/

@@ -12,6 +12,7 @@ Flask-Bcrypt==1.0.1
 Flask-DebugToolbar==0.13.1
 Flask-Login==0.6.2
 Flask-Migrate==4.0.4
+Flask-MySQLdb==1.0.1
 Flask-Script==2.0.6
 Flask-SQLAlchemy==3.0.3
 Flask-WTF==1.1.1
@@ -23,6 +24,7 @@ Mako==1.2.4
 markdown-it-py==2.1.0
 MarkupSafe==2.1.2
 mdurl==0.1.2
+mysqlclient==2.1.1
 pbr==5.11.1
 Pygments==2.14.0
 python-dotenv==0.21.1

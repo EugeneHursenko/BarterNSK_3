@@ -1,4 +1,7 @@
 import click
+import sys
+import locale
+
 from app import app, db, bcrypt
 from datetime import datetime
 from rich import print
@@ -11,6 +14,9 @@ def cli_tech():
     for key, value in app.config.items():
         print(key, '=>', value)
     print(app.config)
+
+    print(sys.getfilesystemencoding())
+    print(locale.getpreferredencoding())
 
 
 @app.cli.command('user-create', short_help='Создание пользователя.')
