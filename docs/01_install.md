@@ -8,7 +8,7 @@
 ./install.cmd
 
 # Debian
-sudo apt install python3 python3-venv pip python-is-python3
+sudo apt install python3 python3-venv pip python-is-python3 libmysqlclient-dev
 ./install.sh
 ```
 
