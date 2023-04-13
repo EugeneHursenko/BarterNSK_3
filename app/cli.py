@@ -11,13 +11,14 @@ from app.models import User
 
 @app.cli.command('tech', short_help='Для технических целей.')
 def cli_tech():
-    for key, value in app.config.items():
-        print(key, '=>', value)
-    print(app.config)
+    # for key, value in app.config.items():
+    #     print(key, '=>', value)
+    # print(app.config)
 
-    print(sys.getfilesystemencoding())
-    print(locale.getpreferredencoding())
+    # print(sys.getfilesystemencoding())
+    # print(locale.getpreferredencoding())
 
+    print(':)')
 
 @app.cli.command('user-create', short_help='Создание пользователя.')
 @click.option('--name', prompt='Имя пользователя (логин)', required=True)
@@ -120,3 +121,38 @@ def cli_user_change_password(email, password):
     db.session.commit()
 
     print('Успешно: Пароль обновлён.')
+
+
+@app.cli.command('user-admin-promote', short_help='Наделить юезра правами админа')
+@click.option('--email', prompt='Email', required=True)
+def cli_user_admin_promote(email):
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        print('Ошибка: Пользователя с таким емаил не существует.')
+        return
+
+    user.role = 1
+
+    db.session.add(user)
+    db.session.commit()
+
+    print('Успешно: Пользователь стал админом')
+
+
+@app.cli.command('user-admin-demote', short_help='Лишить юезра прав админа')
+@click.option('--email', prompt='Email', required=True)
+def cli_user_admin_promote(email):
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        print('Ошибка: Пользователя с таким емаил не существует.')
+        return
+
+    user.role = 0
+
+    db.session.add(user)
+    db.session.commit()
+
+    # @todo переименовать
+    print('Успешно: Пользователь больше не админ')
