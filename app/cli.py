@@ -11,8 +11,8 @@ from app.models import User
 
 @app.cli.command('tech', short_help='Для технических целей.')
 def cli_tech():
-    # for key, value in app.config.items():
-    #     print(key, '=>', value)
+    for key, value in app.config.items():
+        print(key, '=>', value)
     # print(app.config)
 
     # print(sys.getfilesystemencoding())
