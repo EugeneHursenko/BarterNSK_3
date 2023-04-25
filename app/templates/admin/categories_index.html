@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Управление категориями - {{ super() }}
+{% endblock %}
+
+{% from 'macros/form_render_field.html' import render_field %}
+
+{% block content %}
+    <h1>Управление категориями</h1>
+
+    @todo list
+    <table>
+
+    </table>
+
+    <h3>Создание новой категории</h3>
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+        {{ render_field(form.name, class="form-control", autofocus="autofocus") }}
+        <button type="submit" class="btn btn-block btn-primary mb-3">Создать</button>
+    </form>
+{% endblock %}

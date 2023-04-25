@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), index=True, unique=True)
+    created_at = db.Column(db.DateTime(timezone=True), nullable=False)
 
     def __repr__(self):
         return '<Category %r>' % self.title
@@ -30,15 +31,8 @@ class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), index=True)
     description = db.Column(db.Text)
+    created_at = db.Column(db.DateTime(timezone=True), nullable=False)
 
     def __repr__(self):
         return '<Offer %r>' % self.title
 
-
-# class Test2(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(255), index=True)
-#     description = db.Column(db.Text)
-#
-#     def __repr__(self):
-#         return '<Test2 %r>' % self.title

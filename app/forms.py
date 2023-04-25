@@ -13,6 +13,10 @@ from wtforms.validators import InputRequired, Length, EqualTo, Email, Regexp ,Op
 from .models import User
 
 
+class CategoryForm(FlaskForm):
+    name = StringField(label='Название', validators=[InputRequired()])
+
+
 class LoginForm(FlaskForm):
     email = StringField(label='Емаил', validators=[InputRequired(), Email(), Length(1, 64)])
     password = PasswordField(label='Пароль', validators=[InputRequired(), Length(min=3, max=72)])
