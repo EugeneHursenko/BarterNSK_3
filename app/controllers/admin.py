@@ -1,7 +1,9 @@
-from app import app
+from app import app, db
 from app.forms import CategoryForm
+from app.models import Category
+from datetime import datetime
 from flask import abort, flash, redirect, render_template, request, url_for
-from flask_login import current_user, login_required, login_user, logout_user
+from flask_login import current_user, login_required
 
 
 @app.route('/admin/categories', methods=['POST', 'GET'])
@@ -12,10 +14,23 @@ def admin_categories_index():
 
     form = CategoryForm()
 
-    if request.method == 'POST':
-        # @todo создание категрии
+    if request.method == 'POST' and form.validate_on_submit():
+        category = Category.query.filter_by(title=form.title.data).first()
 
-        flash('Категория создана', 'success')
-        return redirect(url_for('admin_categories_index'))
+        if category:
+            flash('Категория уже существует', 'danger')
+        else:
+            category = Category(
+                title=form.title.data,
+                created_at=datetime.now(),
+            )
 
-    return render_template('admin/categories_index.html', form=form)
+            db.session.add(category)
+            db.session.commit()
+
+            flash('Категория создана', 'success')
+            return redirect(url_for('admin_categories_index'))
+
+    categories = Category.query.all()
+
+    return render_template('admin/categories_index.html', form=form, categories=categories)

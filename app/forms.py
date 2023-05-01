@@ -14,7 +14,7 @@ from .models import User
 
 
 class CategoryForm(FlaskForm):
-    name = StringField(label='Название', validators=[InputRequired()])
+    title = StringField(label='Название', validators=[InputRequired()])
 
 
 class LoginForm(FlaskForm):

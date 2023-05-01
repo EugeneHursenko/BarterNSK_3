@@ -20,6 +20,7 @@ def cli_tech():
 
     print(':)')
 
+
 @app.cli.command('user-create', short_help='Создание пользователя.')
 @click.option('--name', prompt='Имя пользователя (логин)', required=True)
 @click.option('--email', prompt='Email', help='Для входа в систему..', required=True)
